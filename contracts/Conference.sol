@@ -13,6 +13,7 @@ interface Conference {
     event SendAndWithdraw(address payable[] addresses, uint256[] values, address addr, uint256 payoutLeft);
     event CancelEvent(uint256 endedAt);
     event ClearEvent(address addr, uint256 leftOver);
+    event ClearAndSend(address payable[] addresses, uint256 value, address payable sender, uint256 fee);
     event UpdateParticipantLimit(uint256 limit);
 
     // Variables
@@ -55,6 +56,8 @@ interface Conference {
     function isPaid(address _addr) external view returns (bool);
     function cancel() external;
     function clear() external;
+    function clearAndSend() external;
+    function clearAndSend(uint256 _num) external;
     function setLimitOfParticipants(uint256 _limitOfParticipants) external;
     function changeName(string calldata _name) external;
     function changeDeposit(uint256 _deposit) external;
